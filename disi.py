@@ -37,10 +37,14 @@ def downPic(url,retries=3):
     html = requests.get(url,timeout=10).content
     soup = BeautifulSoup(html, "html.parser")
     pics = soup.find_all("dt",class_="gallery-icon")
+    title = str(soup.title)
+    No = re.search(r'(\d+)',title).group(0)
     for pic in pics:
         picUrl = pic.find_all("a")[0]['href']
         print picUrl
         picName = picUrl.split('/')[-1]
+        if "-" not in picName:
+            picName = "rosi-{}.jpg".format(No)
 
         savePath = os.path.join(SaveDiskPath,picName)
         if os.path.isfile(savePath):
