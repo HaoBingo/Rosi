@@ -44,7 +44,7 @@ def downPic(url,retries=3):
         print picUrl
         picName = picUrl.split('/')[-1]
         if "-" not in picName:
-            picName = "rosi-{}.jpg".format(No)
+            picName = "disi-{}.jpg".format(No)
 
         savePath = os.path.join(SaveDiskPath,picName)
         if os.path.isfile(savePath):
